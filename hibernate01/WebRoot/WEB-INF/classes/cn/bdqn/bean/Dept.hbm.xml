@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <class name="cn.bdqn.bean.Dept"  lazy="false">
+   <cache usage="read-write"/>
+    <id name="deptNo">
+       <generator class="assigned"></generator>
+    </id>
+   <property name="deptName"></property>
+   <property name="location"></property>
+   <!-- emps对应的是Dept类中的集合对象名 -->
+   <bag name="emps"  cascade="all">
+    <key column="deptNo"/>
+    <one-to-many class="cn.bdqn.bean.Emp"/>
+   </bag> 
+   </class>
+   
+  <query name="selectDept1">
+  <![CDATA[
+       from Dept
+  ]]>
+  </query> 
+   <sql-query name="selectDept2">
+   select * from dept
+   </sql-query>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+
+
+</hibernate-mapping>

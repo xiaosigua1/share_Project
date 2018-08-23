@@ -1,0 +1,15 @@
+<ehcache>
+	<!-- 文件的存放位置 -->
+	<diskStore path="java.io.tmpdir"/>
+	<defaultCache
+	    maxElementsInMemory="500" 
+	    eternal="false"
+		timeToIdleSeconds="120" 
+		timeToLiveSeconds="120" 
+		overflowToDisk="true" />
+	<!-- maxElementsInMemory:设置最大缓存数量 
+	     eternal:是否永远不销毁 
+	     timeToIdleSeconds:当前缓存闲置多少时间就被销毁 
+		 timeToLiveSeconds:当前缓存超过多少时间就被销毁 
+		 overflowToDisk:缓存的内容溢出时是否把缓存数据写入硬盘 -->
+</ehcache>

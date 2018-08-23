@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.bdqn.bean">
+   <class name="Emp" lazy="false">
+     <cache usage="read-only"/>  
+    <id name="empNo">
+       <generator class="assigned"></generator>
+    </id>
+   <property name="empName"/>
+   <property name="job"/>
+   <!--dept代表emp类中对应的 dept部门属性名 -->
+   <many-to-one name="dept" column="deptNo" class="Dept"/>
+   </class>
+   <query name="selectEmpByName">
+    <![CDATA[
+     from Emp where empName=:name
+    ]]>
+   </query>
+   
+   <sql-query name="sqlSelect">
+   select * from emp where empname=:name
+   </sql-query>
+   
+   <sql-query name="selectToDept">
+   <return alias="e" class="Emp"/>
+   <return-join alias="d" property="e.dept"/>
+   select e.*,d.* from emp e,dept d where e.deptno=d.deptno and job=:job
+   </sql-query>
+</hibernate-mapping>

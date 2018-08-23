@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="cn.bdqn.bean">
+    <class name="Users">
+        <id name="id">
+        <!-- 这里声明的是主键的生成策略 -->
+            <generator class="assigned"/>
+        </id>
+        <property name="name"/>
+        <property name="password"/>
+    </class>
+</hibernate-mapping>
